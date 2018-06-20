@@ -1,4 +1,4 @@
-package springBoot.demo.domain;
+package springBoot.demo.domain1;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -6,30 +6,30 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class User {
-
-    private static final long serialVersionUID = 1L;
-    public User(){}
-
-    public User(String name,int age){
-        this.setName(name);
-        this.setAge(age);
-    }
+public class Message {
 
     @Id
     @GeneratedValue
-    private long id;
+    private Long id;
+
     @Column(nullable = false)
     private String name;
 
     @Column(nullable = false)
-    private int age;
+    private String content;
 
-    public long getId() {
+    public Message(){}
+
+    public Message(String name, String content) {
+        this.name = name;
+        this.content = content;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -41,11 +41,11 @@ public class User {
         this.name = name;
     }
 
-    public int getAge() {
-        return age;
+    public String getContent() {
+        return content;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setContent(String content) {
+        this.content = content;
     }
 }
