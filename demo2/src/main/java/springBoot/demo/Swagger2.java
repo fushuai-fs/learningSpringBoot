@@ -20,7 +20,7 @@ public class Swagger2 {
         return  new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("springBoot.demo.web"))
+                .apis(RequestHandlerSelectors.basePackage("springBoot.demo.webapi"))
                 .paths(PathSelectors.any())
                 .build();
     }

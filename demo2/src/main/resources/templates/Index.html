@@ -1,0 +1,19 @@
+<!--
+  User: Administrator
+  Date: 2018/06/22
+  Time: 14:42
+
+-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h1 th:text="${message}">hello world</h1>
+    <p th:text="${#dates.format(date, 'dd/MMM/yyyy HH:mm')}">1111111111111</p>
+    <p th:text="${#dates.createToday()}">222</p>
+    <p th:text="${#dates.createNow()}">333</p>
+</body>
+</html>
