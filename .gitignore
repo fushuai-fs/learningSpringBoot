@@ -33,3 +33,5 @@ DLL*/
 demo.zip
 demoA.zip
 demo1*/
+demo2/*.log
+demo2/*.gz
