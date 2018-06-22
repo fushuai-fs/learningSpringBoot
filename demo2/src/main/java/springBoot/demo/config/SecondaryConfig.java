@@ -17,45 +17,45 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.persistence.EntityManager;
 import javax.sql.DataSource;
 import java.util.Map;
-//
-//@Configuration
-//@EnableTransactionManagement
-//@EnableJpaRepositories(
-//        entityManagerFactoryRef = "entityManagerFactoryPrimary",
-//        transactionManagerRef = "transactionManagerPrimary",
-//        basePackages = {"springBoot.demo.domain1"}) //设置Repository所在位置
-//public class SecondaryConfig {
-//
-//    @Autowired
-//    @Qualifier("secondaryDataSource")
-//    private DataSource secondaryDataSource;
-//
-//    @Bean(name = "entityManagerSecondary")
-//    public EntityManager entityManager(EntityManagerFactoryBuilder builder) {
-//        return entityManagerFactorySecondary(builder).getObject().createEntityManager();
-//    }
-//
-//    @Bean(name = "entityManagerFactorySecondary")
-//    public LocalContainerEntityManagerFactoryBean entityManagerFactorySecondary(EntityManagerFactoryBuilder builder) {
-//        return builder
-//                .dataSource(secondaryDataSource)
-//                .properties(getVendorProperties(secondaryDataSource))
-//                .packages("springBoot.demo.domain1") //设置实体类所在位置
-//                .persistenceUnit("secondaryPersistenceUnit")
-//                .build();
-//    }
-//
-//    @Autowired
-//    private JpaProperties jpaProperties;
-//
-//    private Map<String, String> getVendorProperties(DataSource dataSource) {
-//        return jpaProperties.getProperties();
-//    }
-//
-//    @Bean(name = "transactionManagerSecondary")
-//    PlatformTransactionManager transactionManagerSecondary(EntityManagerFactoryBuilder builder) {
-//        return new JpaTransactionManager(entityManagerFactorySecondary(builder).getObject());
-//    }
-//
-//
-//}
+
+@Configuration
+@EnableTransactionManagement
+@EnableJpaRepositories(
+        entityManagerFactoryRef = "entityManagerFactorySecondary",
+        transactionManagerRef = "transactionManagerSecondary",
+        basePackages = {"springBoot.demo.domain1"}) //设置Repository所在位置
+public class SecondaryConfig {
+
+    @Autowired
+    private JpaProperties jpaProperties;
+    @Autowired
+    @Qualifier("secondaryDataSource")
+    private DataSource secondaryDataSource;
+
+    @Bean(name = "entityManagerSecondary")
+    public EntityManager entityManager(EntityManagerFactoryBuilder builder) {
+        return entityManagerFactorySecondary(builder).getObject().createEntityManager();
+    }
+
+    @Bean(name = "entityManagerFactorySecondary")
+    public LocalContainerEntityManagerFactoryBean entityManagerFactorySecondary(EntityManagerFactoryBuilder builder) {
+        return builder
+                .dataSource(secondaryDataSource)
+                .properties(getVendorProperties())
+                .packages("springBoot.demo.domain1") //设置实体类所在位置
+                .persistenceUnit("secondaryPersistenceUnit")
+                .build();
+    }
+
+
+    private Map<String, Object> getVendorProperties() {
+        return jpaProperties.getHibernateProperties(new HibernateSettings());
+    }
+
+    @Bean(name = "transactionManagerSecondary")
+    PlatformTransactionManager transactionManagerSecondary(EntityManagerFactoryBuilder builder) {
+        return new JpaTransactionManager(entityManagerFactorySecondary(builder).getObject());
+    }
+
+
+}

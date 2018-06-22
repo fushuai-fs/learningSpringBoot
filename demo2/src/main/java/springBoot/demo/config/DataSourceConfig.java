@@ -13,23 +13,23 @@ import org.springframework.context.annotation.Primary;
 
 import javax.sql.DataSource;
 
-//@Configuration
-//public class DataSourceConfig {
-//
-//    @Bean(name = "primaryDataSource")
-//    @Qualifier("primaryDataSource")
-//    @ConfigurationProperties(prefix="spring.datasource.primary")
-//    @Primary
-//    public DataSource primaryDataSource() {
-//        return DataSourceBuilder.create().build();
-//    }
-//
-//    @Bean(name = "secondaryDataSource")
-//    @Qualifier("secondaryDataSource")
-//    @ConfigurationProperties(prefix="spring.datasource.secondary")
-//    public DataSource secondaryDataSource() {
-//        return DataSourceBuilder.create().build();
-//    }
-//
-//
-//}
+@Configuration
+public class DataSourceConfig {
+
+    @Bean(name = "primaryDataSource")
+    @Qualifier("primaryDataSource")
+    @ConfigurationProperties(prefix="spring.datasource.primary")
+    public DataSource primaryDataSource() {
+        return DataSourceBuilder.create().build();
+    }
+
+    @Bean(name = "secondaryDataSource")
+    @Qualifier("secondaryDataSource")
+    @Primary
+    @ConfigurationProperties(prefix="spring.datasource.secondary")
+    public DataSource secondaryDataSource() {
+        return DataSourceBuilder.create().build();
+    }
+
+
+}

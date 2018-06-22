@@ -1,15 +1,23 @@
 package springBoot.demo.domain1;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.io.Serializable;
+
 
 @Entity
-public class Message {
+public class Message implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    public Message(){}
+
+    public Message(String name, String content) {
+        this.name = name;
+        this.content = content;
+    }
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
@@ -18,12 +26,6 @@ public class Message {
     @Column(nullable = false)
     private String content;
 
-    public Message(){}
-
-    public Message(String name, String content) {
-        this.name = name;
-        this.content = content;
-    }
 
     public Long getId() {
         return id;
