@@ -23,7 +23,7 @@ public class RedisTest {
         redisTemplate.opsForValue().set("key1", "ityouknow1");
         redisTemplate.opsForValue().set("key2", "ityouknow2");
 
-        redisTemplate.opsForValue().set("entity",new ClientEntity(),1L);
+        redisTemplate.opsForValue().set("entity",new ClientEntity());
 
     }
 
