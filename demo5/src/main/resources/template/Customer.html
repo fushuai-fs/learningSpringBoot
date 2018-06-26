@@ -1,0 +1,81 @@
+<!--
+  User: fus
+  Date: 2018/06/25
+  Time: 14:56
+  xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>客户管理</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="/css/bootstrap.css"/>
+
+
+</head>
+<body>
+
+<form class="form-inline">
+    <div class="form-group" style="width: 780px; ">
+        <label style="width: 65px;">
+            城市：</label>
+        <select id="city" class="form-control js-example-basic-multiple" style="width: 200px;
+                                                height: 28px" multiple="multiple" data-style="btn-primary">
+        </select>
+        <label style="width: 45px;">
+            酒店：</label>
+        <input type="text" id="hotel" name="hotel" class="form-control" value="" placeholder="酒店名称"/>
+        <button id="btnSel" type="button" class="btn btn-success _button" onclick="select()">
+            <span class="glyphicon icon-search" aria-hidden="true"></span>&nbsp;查询
+        </button>
+        <button id="btnAdd" type="button" class="btn btn-success _button" data-toggle="modal"
+                data-target="" onclick="')">
+            <span class="glyphicon icon-plus" aria-hidden="true"></span>&nbsp;添加
+        </button>
+
+    </div>
+</form>
+<table class="table table-striped table-bordered table-hover" id="cusTable">
+    <thead>
+    <tr>
+        <td> CustomerID</td>
+        <td>FullName</td>
+        <td>Gender</td>
+        <td>Mobile</td>
+        <td>AddTime</td>
+        <td>LastLoginTime</td>
+        <td>IntegralNum</td>
+        <td>操作</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item:${list}">
+        <!--<td style=" display:none" th:text="${item.ID}"></td>-->
+        <td th:utext="${item.CustomerID}"></td>
+        <td th:utext="${item.FullName}"></td>
+        <td th:utext="${item.Gender}"></td>
+        <td th:utext="${item.Mobile}"></td>
+        <td th:utext="${#dates.format(item.AddTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
+
+        <td th:utext="${#dates.format(item.LastLoginTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
+        <td th:utext="${item.IntegralNum}"></td>
+        <td></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+<script src="/js/jquery-3.3.1.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script type="application/javascript" language="JavaScript">
+
+    $(function () {
+        alert('123123425678');
+    });
+    function  select() {
+        alert('');
+    }
+</script>
+
+</html>
