@@ -16,16 +16,20 @@
 </head>
 <body>
 
-<form class="form-inline">
-    <div class="form-group" style="width: 780px; ">
-        <label style="width: 65px;">
-            城市：</label>
-        <select id="city" class="form-control js-example-basic-multiple" style="width: 200px;
-                                                height: 28px" multiple="multiple" data-style="btn-primary">
+<form class="form-inline" action="" method="get">
+    <div class="form-group" >
+        <label>
+            姓名</label>
+        <input type="text" name="name" class="form-control" value="" placeholder="姓名"/>
         </select>
-        <label style="width: 45px;">
-            酒店：</label>
-        <input type="text" id="hotel" name="hotel" class="form-control" value="" placeholder="酒店名称"/>
+        <label>
+            客户ID</label>
+        <input type="text" name="cusID" class="form-control" value="" placeholder="客户ID"/>
+        <label>
+           注册日期</label>
+        <input type="text" name="cusID" class="form-control" value="" placeholder="开始日期"/>
+        <label>-</label>
+        <input type="text" name="cusID" class="form-control" value="" placeholder="结束日期"/>
         <button id="btnSel" type="button" class="btn btn-success _button" onclick="select()">
             <span class="glyphicon icon-search" aria-hidden="true"></span>&nbsp;查询
         </button>
@@ -73,9 +77,7 @@
     $(function () {
         alert('123123425678');
     });
-    function  select() {
-        alert('');
-    }
+
 </script>
 
 </html>
