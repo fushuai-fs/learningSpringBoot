@@ -33,4 +33,15 @@ public class ClientService {
         return list;
     }
 
+    public Long getCount(String name,
+                         Long cusID,
+                         Date beginDate,
+                         Date endDate,
+                         String mobile,
+                         Integer type) {
+        return clientMapper.getCount(name, cusID, beginDate, endDate, mobile, type);
+
+    }
+
+
 }

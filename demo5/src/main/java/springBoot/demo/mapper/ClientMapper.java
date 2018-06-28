@@ -27,4 +27,17 @@ public interface ClientMapper {
                                Date endDate,
                                String mobile,
                                Integer type);
+
+    @Delete("delete customer where id=@id;")
+    int delete(Long id);
+
+    @SelectProvider(type = ClientSql.class,method = "getCount")
+    Long getCount(String name,
+                  Long cusID,
+                  Date beginDate,
+                  Date endDate,
+                  String mobile,
+                  Integer type);
 }
+
+

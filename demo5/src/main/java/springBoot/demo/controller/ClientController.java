@@ -3,7 +3,6 @@ package springBoot.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
-import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.WebDataBinder;
@@ -12,7 +11,6 @@ import springBoot.demo.entity.ClientEntity;
 import springBoot.demo.service.ClientService;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -49,11 +47,17 @@ public class ClientController {
                 name, cusID, beginDate, endDate, mobile, type);
 
 
-        int pageTotal= 10;
+        Long count = clientService.getCount(name, cusID, beginDate, endDate, mobile, type);
+        Long pageTotal = count / pageSize;
+        if (count % pageSize > 0) {
+            pageTotal += 1;
+        }
+
         map.addAttribute("list", clientList);
         map.addAttribute("pageNumber", pageNumber);
         map.addAttribute("pageSize", pageSize);
         map.addAttribute("pageTotal", pageTotal);
+        map.addAttribute("url","/customer/list");
 
         return "Customer";
     }
