@@ -28,7 +28,7 @@
          * 默认使用iframe还是ajax,true 是iframe,false是ajax
          * @type {Boolean}
          */
-        iframe: false,
+        iframe: true,
         /**
          * 固定TAB中IFRAME高度,根据需要自己修改
          * @type {Number}

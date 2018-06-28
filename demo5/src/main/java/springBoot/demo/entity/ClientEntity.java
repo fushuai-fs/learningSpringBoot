@@ -1,6 +1,5 @@
 package springBoot.demo.entity;
 
-import java.time.DateTimeException;
 import java.util.Date;
 
 public class ClientEntity {

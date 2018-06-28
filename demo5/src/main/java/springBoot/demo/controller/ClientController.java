@@ -30,24 +30,30 @@ public class ClientController {
     private ClientService clientService;
 
     @ResponseBody
-    @RequestMapping(value = "/add",method = {RequestMethod.POST})
-    public int add(ClientEntity client){
+    @RequestMapping(value = "/add", method = {RequestMethod.POST})
+    public int add(ClientEntity client) {
 
         return clientService.add(client);
     }
-    @RequestMapping(value = "/list",method = {RequestMethod.GET})
-    public String getList(ModelMap map,@RequestParam(defaultValue = "1")Integer pageNumber
-            ,@RequestParam(defaultValue = "15")Integer pageSize
+
+    @RequestMapping(value = "/list", method = {RequestMethod.GET})
+    public String getList(ModelMap map, @RequestParam(defaultValue = "1") Integer pageNumber
+            , @RequestParam(defaultValue = "5") Integer pageSize
             , @RequestParam(defaultValue = "") String name
             , @RequestParam(defaultValue = "0") Long cusID
             , @RequestParam(required = false) Date beginDate
             , @RequestParam(required = false) Date endDate
             , @RequestParam(defaultValue = "") String mobile
-            , @RequestParam(defaultValue = "0") Integer type)
-    {
-        List<ClientEntity> clientList =clientService.getList();
+            , @RequestParam(defaultValue = "0") Integer type) {
+        List<ClientEntity> clientList = clientService.getList(pageNumber, pageSize,
+                name, cusID, beginDate, endDate, mobile, type);
 
+
+        int pageTotal= 10;
         map.addAttribute("list", clientList);
+        map.addAttribute("pageNumber", pageNumber);
+        map.addAttribute("pageSize", pageSize);
+        map.addAttribute("pageTotal", pageTotal);
 
         return "Customer";
     }

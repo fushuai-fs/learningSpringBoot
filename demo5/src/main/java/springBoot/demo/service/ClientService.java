@@ -6,6 +6,7 @@ import springBoot.demo.entity.ClientEntity;
 import springBoot.demo.mapper.ClientMapper;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service(value = "ClientService")
@@ -18,10 +19,17 @@ public class ClientService {
         return clientMapper.add(client);
     }
 
-    public List<ClientEntity> getList() {
+    public List<ClientEntity> getList(Integer pageNumber,
+                                      Integer pageSize,
+                                      String name,
+                                      Long cusID,
+                                      Date beginDate,
+                                      Date endDate,
+                                      String mobile,
+                                      Integer type) {
 
         List<ClientEntity> list = null;
-        list = clientMapper.getList();
+        list = clientMapper.getList(pageNumber, pageSize, name, cusID, beginDate, endDate, mobile, type);
         return list;
     }
 

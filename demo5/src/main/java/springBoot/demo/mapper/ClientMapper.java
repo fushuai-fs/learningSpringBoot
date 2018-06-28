@@ -1,9 +1,10 @@
 package springBoot.demo.mapper;
 
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import springBoot.demo.entity.ClientEntity;
+import springBoot.demo.mappersql.ClientSql;
 
+import java.util.Date;
 import java.util.List;
 
 public interface ClientMapper {
@@ -14,6 +15,16 @@ public interface ClientMapper {
             "VALUES(#{CustomerID},#{FullName},#{Gender},#{Mobile}#{IntegralNum},#{HeaderUrl})")
     int add(ClientEntity client);
 
-    @Select("select * from Customer ")
-    List<ClientEntity> getList();
+    @SelectProvider(type = ClientSql.class, method = "getList")
+//    @Results({
+//            @Result(property = "FullName", column = "FullName"),
+//    })
+    List<ClientEntity> getList(Integer pageNumber,
+                               Integer pageSize,
+                               String name,
+                               Long cusID,
+                               Date beginDate,
+                               Date endDate,
+                               String mobile,
+                               Integer type);
 }
