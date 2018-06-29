@@ -328,7 +328,7 @@
     }
 
     $.addtabs.add = function (opts) {
-       
+
         var a_target, content;
         opts.id = opts.id ? opts.id : Math.random().toString(36).substring(3, 35);
         if (typeof opts.target == 'object') {
@@ -358,12 +358,12 @@
 
         tab_li.children('li[role = "presentation"].active').removeClass('active');
         tab_content.children('div[role = "tabpanel"].active').removeClass('active');
-		
+
         if (tab_li.find('#tab_' + id).length >= 0) {
             $('#tab_' + id).remove();
             $('#' + id).remove();
         }
-		
+
         //如果TAB不存在，创建一个新的TAB
         if (tab_li.find('#tab_' + id).length < 1) {
             var cover = $('<div>', {
