@@ -43,5 +43,9 @@ public class ClientService {
 
     }
 
+    public int delete(Long id)
+    {
+        return clientMapper.delete(id);
+    }
 
 }

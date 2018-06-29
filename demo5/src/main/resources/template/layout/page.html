@@ -14,48 +14,48 @@
 <nav th:fragment="page" aria-label="Page navigation">
     <ul class="pagination "><!--pagination-lg-->
         <li th:if="${pageNumber>1}">
-            <a th:href="@{${url}(pageNumber=${pageNumber-1},pageSize=${pageSize})}">上一页</a></li>
+            <a th:href="@{${'/customer/list'}(pageNumber=${pageNumber-1},pageSize=${pageSize})}">上一页</a></li>
         <li th:class="${pageNumber==1?'disabled':''}" th:if="${pageNumber==1}"><a href="javascript:void (0);">上一页</a></li>
         <!--<li th:if="${pageNumber-3 >=1}">-->
-        <!--<a th:href="@{${url}(pageNumber=${pageNumber-3},pageSize=${pageSize})}"-->
+        <!--<a th:href="@{${'/customer/list'}(pageNumber=${pageNumber-3},pageSize=${pageSize})}"-->
         <!--th:text="${pageNumber -3}">1</a></li>-->
         <!--<li th:if="${pageNumber-2 >=1}"><a th:href="@{'/customer/list?pageNumber=' + ${pageNumber-2}}"-->
         <!--th:text="${pageNumber -2}">1</a></li>-->
         <!--<li th:if="${pageNumber-1 >=1}"><a th:href="@{'/customer/list?pageNumber=' + ${pageNumber-1}}"-->
         <!--th:text="${pageNumber -1}">1</a></li>-->
         <li th:if="${pageNumber-4>=1}">
-            <a th:href="@{${url}(pageNumber=${pageNumber-4},pageSize=${pageSize})}"
+            <a th:href="@{${'/customer/list'}(pageNumber=${pageNumber-4},pageSize=${pageSize})}"
                th:text="${pageNumber-4}">1</a></li>
         <li th:if="${pageNumber-3>=1}">
-            <a th:href="@{${url}(pageNumber=${pageNumber-3},pageSize=${pageSize})}"
+            <a th:href="@{${'/customer/list'}(pageNumber=${pageNumber-3},pageSize=${pageSize})}"
                th:text="${pageNumber-3}">1</a></li>
         <li th:if="${pageNumber-2>=1}">
-            <a th:href="@{${url}(pageNumber=${pageNumber-2},pageSize=${pageSize})}"
+            <a th:href="@{${'/customer/list'}(pageNumber=${pageNumber-2},pageSize=${pageSize})}"
                th:text="${pageNumber-2}">1</a></li>
         <li th:if="${pageNumber-1>=1}">
-            <a th:href="@{${url}(pageNumber=${pageNumber-1},pageSize=${pageSize})}"
+            <a th:href="@{${'/customer/list'}(pageNumber=${pageNumber-1},pageSize=${pageSize})}"
                th:text="${pageNumber-1}">1</a></li>
 
         <li class="active"><a href="javascript:void(0);" th:text="${pageNumber}">1</a></li>
 
         <li th:if="${pageNumber+1<=pageTotal}">
-            <a th:href="@{${url}(pageNumber=${pageNumber+1},pageSize=${pageSize})}"
+            <a th:href="@{${'/customer/list'}(pageNumber=${pageNumber+1},pageSize=${pageSize})}"
                th:text="${pageNumber+1}">1</a></li>
         <li th:if="${pageNumber+2<=pageTotal}">
-            <a th:href="@{${url}(pageNumber=${pageNumber+2},pageSize=${pageSize})}"
+            <a th:href="@{${'/customer/list'}(pageNumber=${pageNumber+2},pageSize=${pageSize})}"
                th:text="${pageNumber+2}">1</a></li>
         <li th:if="${pageNumber+3<=pageTotal}">
-            <a th:href="@{${url}(pageNumber=${pageNumber+3},pageSize=${pageSize})}"
+            <a th:href="@{${'/customer/list'}(pageNumber=${pageNumber+3},pageSize=${pageSize})}"
                th:text="${pageNumber+3}">1</a></li>
         <li th:if="${pageNumber+4<=pageTotal}">
-            <a th:href="@{${url}(pageNumber=${pageNumber+4},pageSize=${pageSize})}"
+            <a th:href="@{${'/customer/list'}(pageNumber=${pageNumber+4},pageSize=${pageSize})}"
                th:text="${pageNumber+4}">1</a></li>
         <li th:if="${pageNumber+5<=pageTotal}">
-            <a th:href="@{${url}(pageNumber=${pageNumber+5},pageSize=${pageSize})}"
+            <a th:href="@{${'/customer/list'}(pageNumber=${pageNumber+5},pageSize=${pageSize})}"
                th:text="${pageNumber+5}">1</a></li>
 
         <li th:if="${pageNumber<pageTotal}">
-            <a th:href="@{${url}(pageNumber=${pageNumber+1},pageSize=${pageSize})}">下一页</a></li>
+            <a th:href="@{${'/customer/list'}(pageNumber=${pageNumber+1},pageSize=${pageSize})}">下一页</a></li>
         <li th:class="${pageNumber==pageTotal?'disabled':''}" th:if="${pageNumber==pageTotal}"><a href="javascript:void (0);">下一页</a></li>
     </ul>
 </nav>

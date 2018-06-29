@@ -12,7 +12,7 @@ public interface ClientMapper {
     ClientEntity getOne(Long id);
 
      @Insert("INSERT INTO Customer ( CustomerID,FullName,Gender,Mobile,IntegralNum,HeaderUrl)" +
-            "VALUES(#{CustomerID},#{FullName},#{Gender},#{Mobile}#{IntegralNum},#{HeaderUrl})")
+            "VALUES(#{CustomerID},#{FullName},#{Gender},#{Mobile},#{IntegralNum},#{HeaderUrl})")
     int add(ClientEntity client);
 
     @SelectProvider(type = ClientSql.class, method = "getList")
@@ -28,7 +28,7 @@ public interface ClientMapper {
                                String mobile,
                                Integer type);
 
-    @Delete("delete customer where id=@id;")
+    @Delete("delete from customer where id=#{id};")
     int delete(Long id);
 
     @SelectProvider(type = ClientSql.class,method = "getCount")

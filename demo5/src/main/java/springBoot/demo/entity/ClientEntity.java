@@ -11,7 +11,7 @@ public class ClientEntity {
     private String Mobile;
 
     private int IntegralNum;
-    private String HeaderUrl;
+    private String HeaderUrl="";
 
     private Date AddTime;
     private Date LastLoginTime;

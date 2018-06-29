@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.mvc.support.RedirectAttributesModelMap;
 import springBoot.demo.entity.ClientEntity;
 import springBoot.demo.service.ClientService;
 
@@ -27,11 +29,23 @@ public class ClientController {
     @Autowired
     private ClientService clientService;
 
-    @ResponseBody
-    @RequestMapping(value = "/add", method = {RequestMethod.POST})
-    public int add(ClientEntity client) {
 
-        return clientService.add(client);
+    @RequestMapping(value = "/save", method = {RequestMethod.POST})
+    public String add(RedirectAttributes map, @RequestParam(defaultValue = "") String name
+            , @RequestParam(defaultValue = "") Integer gender
+            , @RequestParam(defaultValue = "") String mobile) {
+        ClientEntity client = new ClientEntity();
+        client.setCustomerID(1234567890L);
+        client.setFullName(name);
+        client.setGender(gender);
+        client.setMobile(mobile);
+        int i = clientService.add(client);
+        if (i == 0) {
+            map.addFlashAttribute("error", "添加失败！");
+        } else {
+            map.addFlashAttribute("error", "添加成功！");
+        }
+        return "redirect:/customer/list";
     }
 
     @RequestMapping(value = "/list", method = {RequestMethod.GET})
@@ -57,8 +71,26 @@ public class ClientController {
         map.addAttribute("pageNumber", pageNumber);
         map.addAttribute("pageSize", pageSize);
         map.addAttribute("pageTotal", pageTotal);
-        map.addAttribute("url","/customer/list");
+        map.addAttribute("url", "/customer/list");
 
         return "Customer";
+    }
+
+    @RequestMapping(value = "/delete/{id}")
+    public String delete(RedirectAttributes map,@PathVariable(name = "id") Long id){
+
+        if (id<=0)
+        {
+            map.addFlashAttribute("error", "参数错误！");
+        }
+        else {
+            int i = clientService.delete(id);
+            if(i==0){
+                map.addFlashAttribute("error", "删除失败！");
+            } else {
+                map.addFlashAttribute("error", "删除成功！");
+            }
+        }
+        return "redirect:/customer/list";
     }
 }
