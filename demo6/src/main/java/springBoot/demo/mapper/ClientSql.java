@@ -1,11 +1,8 @@
-package springBoot.demo.mappersql;
+package springBoot.demo.mapper;
 
-import jdk.nashorn.internal.objects.annotations.Where;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.jdbc.SQL;
 import springBoot.demo.param.ClientParam;
-
-import java.util.Date;
 
 public class ClientSql {
 
@@ -16,21 +13,21 @@ public class ClientSql {
         if (StringUtils.isNotBlank(clientParam.getName())) {
             sql.append(" and FullName = #{name}");
         }
-        if (clientParam.getCusID()>0) {
+        if (null != clientParam.getCusID() && clientParam.getCusID() > 0L) {
             sql.append(" and CustomerID = #{cusID}");
         }
 
         if (StringUtils.isNotBlank(clientParam.getMobile())) {
             sql.append(" and mobile = #{mobile}");
         }
-        if (clientParam.getType()>0) {
+        if (null != clientParam.getType() && clientParam.getType() > 0) {
             sql.append(" and UserType = #{type}");
         }
 
         if (null != clientParam.getBeginDate()) {
             sql.append(" and AddTime >= #{beginDate}");
         }
-            if (null != clientParam.getEndDate()) {
+        if (null != clientParam.getEndDate()) {
             sql.append(" and AddTime <= #{endDate}");
         }
         sql.append(" order by id desc");
@@ -39,19 +36,20 @@ public class ClientSql {
         return sql.toString();
     }
 
-    public String getCount(ClientParam clientParam){
-        String sqls = new SQL(){{
-            SELECT ("count(1)");FROM("customer");
-            if(StringUtils.isNotBlank(clientParam.getName())){
-                WHERE("name=#{name}");
+    public String getCount(ClientParam clientParam) {
+        String sqls = new SQL() {{
+            SELECT("count(1) ");
+            FROM("customer");
+            if (StringUtils.isNotBlank(clientParam.getName())) {
+                WHERE("FullName=#{name}");
             }
-            if (clientParam.getCusID()>0) {
+            if (null != clientParam.getCusID() && clientParam.getCusID() > 0L) {
                 WHERE(" CustomerID = #{cusID}");
             }
-            if(StringUtils.isNotBlank(clientParam.getMobile())){
+            if (StringUtils.isNotBlank(clientParam.getMobile())) {
                 WHERE("mobile= #{mobile}");
             }
-            if (clientParam.getType()>0) {
+            if (null != clientParam.getType() && clientParam.getType() > 0) {
                 WHERE(" UserType = #{type}");
             }
 
@@ -62,7 +60,7 @@ public class ClientSql {
                 WHERE(" AddTime <= #{endDate}");
             }
         }}.toString();
-        return  sqls;
+        return sqls;
     }
 
 }

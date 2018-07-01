@@ -5,11 +5,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributesModelMap;
 import springBoot.demo.entity.ClientEntity;
+import springBoot.demo.param.ClientParam;
 import springBoot.demo.service.ClientService;
 
 import java.text.SimpleDateFormat;
@@ -48,34 +50,57 @@ public class ClientController {
         return "redirect:/customer/list";
     }
 
+
+//    public String getList(ModelMap map, @RequestParam(defaultValue = "1") Integer pageNumber
+//            , @RequestParam(defaultValue = "5") Integer pageSize
+//            , @RequestParam(defaultValue = "") String name
+//            , @RequestParam(defaultValue = "0") Long cusID
+//            , @RequestParam(required = false) Date beginDate
+//            , @RequestParam(required = false) Date endDate
+//            , @RequestParam(defaultValue = "") String mobile
+//            , @RequestParam(defaultValue = "0") Integer type)
+//    {
+//        List<ClientEntity> clientList = clientService.getList(pageNumber, pageSize,
+//                name, cusID, beginDate, endDate, mobile, type);
+//
+//
+//        Long count = clientService.getCount(name, cusID, beginDate, endDate, mobile, type);
+//        Long pageTotal = count / pageSize;
+//        if (count % pageSize > 0) {
+//            pageTotal += 1;
+//        }
+//
+//        map.addAttribute("list", clientList);
+//        map.addAttribute("pageNumber", pageNumber);
+//        map.addAttribute("pageSize", pageSize);
+//        map.addAttribute("pageTotal", pageTotal);
+//        map.addAttribute("url", "/customer/list");
+//
+//        return "Customer";
+//    }
+
     @RequestMapping(value = "/list", method = {RequestMethod.GET})
-    public String getList(ModelMap map, @RequestParam(defaultValue = "1") Integer pageNumber
-            , @RequestParam(defaultValue = "5") Integer pageSize
-            , @RequestParam(defaultValue = "") String name
-            , @RequestParam(defaultValue = "0") Long cusID
-            , @RequestParam(required = false) Date beginDate
-            , @RequestParam(required = false) Date endDate
-            , @RequestParam(defaultValue = "") String mobile
-            , @RequestParam(defaultValue = "0") Integer type) {
-        List<ClientEntity> clientList = clientService.getList(pageNumber, pageSize,
-                name, cusID, beginDate, endDate, mobile, type);
+    public String getList( ClientParam clientParam,ModelMap map)
+    {
+
+        List<ClientEntity> clientList = clientService.getList(clientParam);
 
 
-        Long count = clientService.getCount(name, cusID, beginDate, endDate, mobile, type);
-        Long pageTotal = count / pageSize;
-        if (count % pageSize > 0) {
+        Long count = clientService.getCount(clientParam);
+        Long pageTotal = count / clientParam.getPageSize();
+        if (count % clientParam.getPageSize() > 0) {
             pageTotal += 1;
         }
 
         map.addAttribute("list", clientList);
-        map.addAttribute("pageNumber", pageNumber);
-        map.addAttribute("pageSize", pageSize);
+        map.addAttribute("pageNumber", clientParam.getPageNumber());
+        map.addAttribute("pageSize", clientParam.getPageSize());
         map.addAttribute("pageTotal", pageTotal);
+        map.addAttribute("pages",clientParam);
         map.addAttribute("url", "/customer/list");
 
         return "Customer";
     }
-
     @RequestMapping(value = "/delete/{id}")
     public String delete(RedirectAttributes map,@PathVariable(name = "id") Long id){
 
