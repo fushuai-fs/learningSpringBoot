@@ -1,9 +1,9 @@
 package springBoot.demo.service;
 
 import org.springframework.stereotype.Service;
-import springBoot.demo.entity.ClientEntity;
-import springBoot.demo.mapper.ClientMapper;
-import springBoot.demo.param.ClientParam;
+import springBoot.demo.entity.ActivityEntity;
+import springBoot.demo.mapper.ActivityMapper;
+import springBoot.demo.param.ActivityParam;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -11,27 +11,31 @@ import java.util.List;
 @Service(value = "ActivityService")
 public class ActivityService {
     @Resource
-    private ClientMapper clientMapper;
+    private ActivityMapper mapper;
 
-    public int add(ClientEntity client) {
+    public int save(ActivityEntity entity) {
 
-        return clientMapper.add(client);
+        return mapper.save(entity);
     }
     public int delete(Long id)
     {
-        return clientMapper.delete(id);
+        return mapper.delete(id);
     }
 
+    public int update(ActivityEntity entity) {
 
-    public List<ClientEntity> getList(ClientParam clientParam) {
+        return mapper.update(entity);
+    }
 
-        List<ClientEntity> list = null;
-        list = clientMapper.getList(clientParam);
+    public List<ActivityEntity> getList(ActivityParam param) {
+
+        List<ActivityEntity> list = null;
+        list = mapper.getList(param);
         return list;
     }
 
-    public Long getCount(ClientParam clientParam) {
-        return clientMapper.getCount(clientParam);
+    public Long getCount(ActivityParam param) {
+        return mapper.getCount(param);
 
     }
 

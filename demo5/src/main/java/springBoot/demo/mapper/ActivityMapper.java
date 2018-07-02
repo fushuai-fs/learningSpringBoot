@@ -11,7 +11,7 @@ import springBoot.demo.mappersql.ActivitySql;
 import springBoot.demo.param.ActivityParam;
 
 import java.util.List;
-@Mapper
+
 public interface ActivityMapper {
 
     @Insert("")

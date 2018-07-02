@@ -13,7 +13,7 @@ import springBoot.demo.param.IntegralParam;
 
 import java.util.List;
 
-public interface IntergraMapper {
+public interface IntegralMapper {
 
     @Insert("")
     int save(IntegralEntity integralEntity);
