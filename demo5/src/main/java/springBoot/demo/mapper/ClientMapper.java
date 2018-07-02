@@ -3,6 +3,7 @@ package springBoot.demo.mapper;
 import org.apache.ibatis.annotations.*;
 import springBoot.demo.entity.ClientEntity;
 import springBoot.demo.mappersql.ClientSql;
+import springBoot.demo.param.ClientParam;
 
 import java.util.Date;
 import java.util.List;
@@ -19,25 +20,13 @@ public interface ClientMapper {
 //    @Results({
 //            @Result(property = "FullName", column = "FullName"),
 //    })
-    List<ClientEntity> getList(Integer pageNumber,
-                               Integer pageSize,
-                               String name,
-                               Long cusID,
-                               Date beginDate,
-                               Date endDate,
-                               String mobile,
-                               Integer type);
+    List<ClientEntity> getList(ClientParam clientParam);
 
     @Delete("delete from customer where id=#{id};")
     int delete(Long id);
 
     @SelectProvider(type = ClientSql.class,method = "getCount")
-    Long getCount(String name,
-                  Long cusID,
-                  Date beginDate,
-                  Date endDate,
-                  String mobile,
-                  Integer type);
+    Long getCount(ClientParam clientParam);
 }
 
 

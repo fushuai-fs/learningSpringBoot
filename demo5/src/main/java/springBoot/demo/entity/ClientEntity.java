@@ -1,8 +1,10 @@
 package springBoot.demo.entity;
 
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+
 import java.util.Date;
 
-public class ClientEntity {
+public class ClientEntity extends BasicEntity {
 
     private Long Id;
     private Long CustomerID;

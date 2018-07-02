@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributesModelMap;
 import springBoot.demo.entity.ClientEntity;
+import springBoot.demo.param.ClientParam;
 import springBoot.demo.service.ClientService;
 
 import java.text.SimpleDateFormat;
@@ -57,35 +58,44 @@ public class ClientController {
             , @RequestParam(required = false) Date endDate
             , @RequestParam(defaultValue = "") String mobile
             , @RequestParam(defaultValue = "0") Integer type) {
-        List<ClientEntity> clientList = clientService.getList(pageNumber, pageSize,
-                name, cusID, beginDate, endDate, mobile, type);
+
+        ClientParam clientParam = new ClientParam();
+        clientParam.setPageNumber(pageNumber);
+        clientParam.setPageSize(pageSize);
+        clientParam.setName(name);
+        clientParam.setCusID(cusID);
+        clientParam.setBeginDate(beginDate);
+        clientParam.setEndDate(endDate);
+        clientParam.setMobile(mobile);
+        clientParam.setType(type);
+        List<ClientEntity> clientList = clientService.getList(clientParam);
 
 
-        Long count = clientService.getCount(name, cusID, beginDate, endDate, mobile, type);
+        Long count = clientService.getCount(clientParam);
         Long pageTotal = count / pageSize;
         if (count % pageSize > 0) {
             pageTotal += 1;
         }
+        clientParam.setPageTotal(pageTotal);
 
         map.addAttribute("list", clientList);
         map.addAttribute("pageNumber", pageNumber);
         map.addAttribute("pageSize", pageSize);
         map.addAttribute("pageTotal", pageTotal);
+        map.addAttribute("pages", clientParam);
         map.addAttribute("url", "/customer/list");
 
         return "Customer";
     }
 
     @RequestMapping(value = "/delete/{id}")
-    public String delete(RedirectAttributes map,@PathVariable(name = "id") Long id){
+    public String delete(RedirectAttributes map, @PathVariable(name = "id") Long id) {
 
-        if (id<=0)
-        {
+        if (id <= 0) {
             map.addFlashAttribute("error", "参数错误！");
-        }
-        else {
+        } else {
             int i = clientService.delete(id);
-            if(i==0){
+            if (i == 0) {
                 map.addFlashAttribute("error", "删除失败！");
             } else {
                 map.addFlashAttribute("error", "删除成功！");

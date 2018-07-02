@@ -1,6 +1,6 @@
 package springBoot.demo.entity;
 
-public class MenuEntity {
+public class MenuEntity extends BasicEntity {
     private int ID;
     private String iconName;
     private String menuName;
