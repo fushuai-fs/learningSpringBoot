@@ -135,7 +135,7 @@ public class IndexController {
         menu.setMenuName("产品管理");
         menu.setParentID(6);
         menu.setMenuType(1);
-        menu.setPageUrl("/order/list");
+        menu.setPageUrl("/Product/list");
         listMenu.add(menu);
 
        listMenu =  listMenu.stream().filter(menuEntity -> menuEntity.getParentID()==ID).collect(Collectors.toList());

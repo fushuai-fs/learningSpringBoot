@@ -24,7 +24,7 @@ public class ClientController {
     @InitBinder
     protected void initBinder(WebDataBinder binder) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true)); 
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
     }
 
     @Autowired
@@ -32,7 +32,7 @@ public class ClientController {
 
 
     @RequestMapping(value = "/save", method = {RequestMethod.POST})
-    public String add(RedirectAttributes map, @RequestParam(defaultValue = "") String name
+    public String save(RedirectAttributes map, @RequestParam(defaultValue = "") String name
             , @RequestParam(defaultValue = "") Integer gender
             , @RequestParam(defaultValue = "") String mobile) {
         ClientEntity client = new ClientEntity();
@@ -88,7 +88,7 @@ public class ClientController {
         return "Customer";
     }
 
-    @RequestMapping(value = "/delete/{id}")
+    @RequestMapping(value = "/delete/{id}",method = {RequestMethod.GET})
     public String delete(RedirectAttributes map, @PathVariable(name = "id") Long id) {
 
         if (id <= 0) {
@@ -101,6 +101,10 @@ public class ClientController {
                 map.addFlashAttribute("error", "删除成功！");
             }
         }
+        return "redirect:/customer/list";
+    }
+    @RequestMapping(value = "/update/",method = {RequestMethod.POST})
+    public String update(RedirectAttributes map) {
         return "redirect:/customer/list";
     }
 }
