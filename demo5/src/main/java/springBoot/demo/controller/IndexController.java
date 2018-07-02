@@ -8,6 +8,7 @@ import springBoot.demo.entity.MenuEntity;
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller("Index")
 public class IndexController {
@@ -82,21 +83,18 @@ public class IndexController {
     public List<MenuEntity> sideMenu(@RequestParam(defaultValue = "1") int ID) {
 
         List<MenuEntity> listMenu = new ArrayList<>();
-        switch (ID)
-        {
 
-        }
         MenuEntity menu = new MenuEntity();
-        menu.setID(1);
+        menu.setID(101);
         menu.setIconName("glyphicon glyphicon-inbox");
         menu.setMenuName("系统管理");
         menu.setParentID(1);
         menu.setMenuType(1);
-        menu.setPageUrl("/customer");
+        menu.setPageUrl("/system");
         listMenu.add(menu);
 
         menu = new MenuEntity();
-        menu.setID(2);
+        menu.setID(201);
         menu.setIconName("glyphicon glyphicon-user");
         menu.setMenuName("客户管理");
         menu.setParentID(2);
@@ -104,6 +102,43 @@ public class IndexController {
         menu.setPageUrl("/customer/list");
         listMenu.add(menu);
 
+        menu = new MenuEntity();
+        menu.setID(301);
+        menu.setIconName("glyphicon glyphicon-list");
+        menu.setMenuName("活动管理");
+        menu.setParentID(3);
+        menu.setMenuType(1);
+        menu.setPageUrl("/activity/list");
+        listMenu.add(menu);
+
+        menu = new MenuEntity();
+        menu.setID(401);
+        menu.setIconName("glyphicon glyphicon-list");
+        menu.setMenuName("积分管理");
+        menu.setParentID(4);
+        menu.setMenuType(1);
+        menu.setPageUrl("/integral/list");
+        listMenu.add(menu);
+
+        menu = new MenuEntity();
+        menu.setID(501);
+        menu.setIconName("glyphicon glyphicon-list-alt");
+        menu.setMenuName("订单管理");
+        menu.setParentID(5);
+        menu.setMenuType(1);
+        menu.setPageUrl("/order/list");
+        listMenu.add(menu);
+
+        menu = new MenuEntity();
+        menu.setID(601);
+        menu.setIconName("glyphicon glyphicon-equalizer");
+        menu.setMenuName("产品管理");
+        menu.setParentID(6);
+        menu.setMenuType(1);
+        menu.setPageUrl("/order/list");
+        listMenu.add(menu);
+
+       listMenu =  listMenu.stream().filter(menuEntity -> menuEntity.getParentID()==ID).collect(Collectors.toList());
 
         return listMenu;
     }

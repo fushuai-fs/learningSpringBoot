@@ -13,8 +13,15 @@
     <title>客户管理</title>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="/css/select2.css">
     <link rel="stylesheet" href="/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/css/bootstrap-datetimepicker.css">
+
     <script src="/js/jquery-3.2.1.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/select2.full.js"></script>
+    <script src="/js/bootstrap-datetimepicker.js"></script>
+    <script src="/js/bootstrap-datetimepicker.zh-CN.js"></script>
 
 
 </head>
@@ -31,18 +38,23 @@
             </select>
             <label>
                 客户 ID</label>
-            <input type="text" name="cusID" class="form-control" th:value="${pages.cusID}" placeholder="客户ID"/>
+            <input type="text" name="cusID" class="form-control" th:value="${pages.cusID==0?'':pages.cusID}" placeholder="客户ID"/>
             <label>
                 注册日期</label>
-            <input type="text" name="beginDate" class="form-control datetimepicker" th:value="${pages.beginDate}" placeholder="开始日期"/>
+            <input type="text" name="beginDate" class="form-control datetimepicker" th:value="${#dates.format(pages.beginDate, 'yyyy-MM-dd')}" placeholder="开始日期"/>
             <label>-</label>
-            <input type="text" name="endDate" class="form-control datetimepicker" th:value="${pages.endDate}" placeholder="结束日期"/>
+            <input type="text" name="endDate" class="form-control datetimepicker" th:value="${#dates.format(pages.endDate, 'yyyy-MM-dd')}" placeholder="结束日期"/>
         </div>
         <div>
             <label>手机号</label>
             <input type="text" name="mobile" class="form-control" th:value="${pages.mobile}" placeholder="手机号"/>
             <label>下　&nbsp;单</label>
-            <input type="text" name="type" class="form-control select2-single" th:value="${pages.type}" placeholder="下单"/>
+            <!--<input type="text" name="type" class="form-control select2-single" th:value="${pages.type}" placeholder="下单"/>-->
+            <select class="form-control select2-single" name="type">
+                <option value="0" th:selected="${pages.type==0}">全部</option>
+                <option value="1" th:selected="${pages.type==1}">是</option>
+                <option value="2" th:selected="${pages.type==2}">否</option>
+            </select>
             <button id="btnSel" type="submit" class="btn btn-success">
                 <span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp;查询
             </button>
@@ -88,6 +100,7 @@
 
 <!--接收操作结果,直接显示，实际可以用js判断来是否为空，alert提示-->
 <label th:text="${error}"></label>
+<label th:text="${pages.type}"></label>
 <!-- 模态框（Modal） -->
 <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
     <div class="modal-dialog">
@@ -137,16 +150,19 @@
 </div>
 
 </body>
-<script src="/js/bootstrap.js"></script>
 <script type="text/javascript" language="JavaScript">
 
     $(function () {
         $('.select2-single').select2({
-            ajax: {
-                url: '/',
-                dataType: 'json'
+            minimumResultsForSearch: -1 // 隐藏搜索框
+        });
+        $('.datetimepicker').datetimepicker({
+            format: 'yyyy-mm-dd',
+            minView: "month",
+            language: 'zh-CN',
+            todayBtn: false,
+            autoclose: true, minDate: '2017-05-01'
 
-            }
         });
     });
 
