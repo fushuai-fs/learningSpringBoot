@@ -16,6 +16,7 @@ import springBoot.demo.service.ClientService;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicLong;
 
 @Controller("customer")
 @RequestMapping(value = "customer")
@@ -36,7 +37,8 @@ public class ClientController {
             , @RequestParam(defaultValue = "") Integer gender
             , @RequestParam(defaultValue = "") String mobile) {
         ClientEntity client = new ClientEntity();
-        client.setCustomerID(1234567890L);
+        Long id = new AtomicLong(System.currentTimeMillis()).incrementAndGet();
+        client.setCustomerID(id);
         client.setFullName(name);
         client.setGender(gender);
         client.setMobile(mobile);

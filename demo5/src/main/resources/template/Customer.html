@@ -29,8 +29,8 @@
 
 <form class="form-inline" th:action="@{/customer/list}" method="get" >
     <div class="form-group">
-        <input type="hidden" name="pageNumber" th:value="${pageNumber}">
-        <input type="hidden" name="pageSize" th:value="${pageSize}">
+        <input type="hidden" name="pageNumber" th:value="${pages.pageNumber}">
+        <input type="hidden" name="pageSize" th:value="$pages.pageSize}">
         <div>
             <label>
                 姓　名</label>
@@ -100,7 +100,6 @@
 
 <!--接收操作结果,直接显示，实际可以用js判断来是否为空，alert提示-->
 <label th:text="${error}"></label>
-<label th:text="${pages.type}"></label>
 <!-- 模态框（Modal） -->
 <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
     <div class="modal-dialog">
