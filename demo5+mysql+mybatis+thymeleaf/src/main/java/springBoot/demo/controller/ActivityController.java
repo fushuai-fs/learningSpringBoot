@@ -47,25 +47,25 @@ public class ActivityController {
         return "";
     }
 
-    @RequestMapping(value = "/list", method = {RequestMethod.GET})
-    public String getList(ActivityParam param, ModelMap map) {
-
-      List<ActivityEntity> list = activityService.getList(param);
-        Long count = activityService.getCount(param);
-        Long pageTotal = count / param.getPageSize();
-        if (count % param.getPageSize() > 0) {
-            pageTotal += 1;
-        }
-        param.setPageTotal(pageTotal);
-
-        map.addAttribute("list", list);
-        map.addAttribute("pageNumber", param.getPageNumber());
-        map.addAttribute("pageSize", param.getPageSize());
-        map.addAttribute("pageTotal", pageTotal);
-        map.addAttribute("pages", param);
-        map.addAttribute("url", "/Activity/list");
-
-        return "Activity";
-    }
+//    @RequestMapping(value = "/list", method = {RequestMethod.GET})
+//    public String getList(ActivityParam param, ModelMap map) {
+//
+//      List<ActivityEntity> list = activityService.getList(param);
+//        Long count = activityService.getCount(param);
+//        Long pageTotal = count / param.getPageSize();
+//        if (count % param.getPageSize() > 0) {
+//            pageTotal += 1;
+//        }
+//        param.setPageTotal(pageTotal);
+//
+//        map.addAttribute("list", list);
+//        map.addAttribute("pageNumber", param.getPageNumber());
+//        map.addAttribute("pageSize", param.getPageSize());
+//        map.addAttribute("pageTotal", pageTotal);
+//        map.addAttribute("pages", param);
+//        map.addAttribute("url", "/Activity/list");
+//
+//        return "Activity";
+//    }
 
 }

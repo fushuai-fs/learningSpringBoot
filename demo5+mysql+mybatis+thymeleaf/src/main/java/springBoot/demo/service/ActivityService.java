@@ -27,16 +27,16 @@ public class ActivityService {
         return mapper.update(entity);
     }
 
-    public List<ActivityEntity> getList(ActivityParam param) {
-
-        List<ActivityEntity> list = null;
-        list = mapper.getList(param);
-        return list;
-    }
-
-    public Long getCount(ActivityParam param) {
-        return mapper.getCount(param);
-
-    }
+//    public List<ActivityEntity> getList(ActivityParam param) {
+//
+//        List<ActivityEntity> list = null;
+//        list = mapper.getList(param);
+//        return list;
+//    }
+//
+//    public Long getCount(ActivityParam param) {
+//        return mapper.getCount(param);
+//
+//    }
 
 }

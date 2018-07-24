@@ -23,20 +23,16 @@ public class IntegralService {
         return mapper.delete(id);
     }
 
-    public int update(IntegralEntity entity) {
 
-        return mapper.update(entity);
-    }
-
-    public List<IntegralEntity> getList(IntegralParam param) {
-
-        List<IntegralEntity> list = null;
-        list = mapper.getList(param);
-        return list;
-    }
-
-    public Long getCount(IntegralParam param) {
-        return mapper.getCount(param);
-
-    }
+//    public List<IntegralEntity> getList(IntegralParam param) {
+//
+//        List<IntegralEntity> list = null;
+//        list = mapper.getList(param);
+//        return list;
+//    }
+//
+//    public Long getCount(IntegralParam param) {
+//        return mapper.getCount(param);
+//
+//    }
 }
