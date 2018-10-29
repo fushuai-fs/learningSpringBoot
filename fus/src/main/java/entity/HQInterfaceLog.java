@@ -1,142 +1,147 @@
-///*
-//  Author: Administration-PC
-//  Date: 2018/10/26 16:20
-//  Copyright ： all rights reserved
-//*/
-//package entity;
-//
-//import javax.persistence.Column;
-//import javax.persistence.Entity;
-//import javax.persistence.GeneratedValue;
-//import javax.persistence.Id;
-//import java.io.Serializable;
-//import java.util.Date;
-//
-//@Entity
-//public class HQInterfaceLog implements Serializable {
-//    private static final long serialVersionUID = 1L;
-//    @Id
-//    @GeneratedValue
-//    private Long  ID;
-//    @Column
-//    private boolean IsCache;
-//    @Column
-//    private String Type;
-//    @Column
-//    private Long    AvailID;
-//    @Column
-//    private Long   OrderID;
-//    @Column
-//    private int       CityID;
-//    @Column
-//    private Long   HotelID;
-//    @Column
-//    private int     RoomCount;
-//    @Column
-//    private int    AdultCount;
-//    @Column
-//    private String   Request;
-//    @Column
-//    private String Response;
-//    @Column
-//    private String  Error;
-//
-//
-//    public Long getID() {
-//        return ID;
-//    }
-//
-//    public void setID(Long ID) {
-//        this.ID = ID;
-//    }
-//
-//    public boolean isCache() {
-//        return IsCache;
-//    }
-//
-//    public void setCache(boolean cache) {
-//        IsCache = cache;
-//    }
-//
-//    public String getType() {
-//        return Type;
-//    }
-//
-//    public void setType(String type) {
-//        Type = type;
-//    }
-//
-//    public Long getAvailID() {
-//        return AvailID;
-//    }
-//
-//    public void setAvailID(Long availID) {
-//        AvailID = availID;
-//    }
-//
-//    public Long getOrderID() {
-//        return OrderID;
-//    }
-//
-//    public void setOrderID(Long orderID) {
-//        OrderID = orderID;
-//    }
-//
-//    public int getCityID() {
-//        return CityID;
-//    }
-//
-//    public void setCityID(int cityID) {
-//        CityID = cityID;
-//    }
-//
-//    public Long getHotelID() {
-//        return HotelID;
-//    }
-//
-//    public void setHotelID(Long hotelID) {
-//        HotelID = hotelID;
-//    }
-//
-//
-//    public int getRoomCount() {
-//        return RoomCount;
-//    }
-//
-//    public void setRoomCount(int roomCount) {
-//        RoomCount = roomCount;
-//    }
-//
-//    public int getAdultCount() {
-//        return AdultCount;
-//    }
-//
-//    public void setAdultCount(int adultCount) {
-//        AdultCount = adultCount;
-//    }
-//
-//    public String getRequest() {
-//        return Request;
-//    }
-//
-//    public void setRequest(String request) {
-//        Request = request;
-//    }
-//
-//    public String getResponse() {
-//        return Response;
-//    }
-//
-//    public void setResponse(String response) {
-//        Response = response;
-//    }
-//
-//    public String getError() {
-//        return Error;
-//    }
-//
-//    public void setError(String error) {
-//        Error = error;
-//    }
-//
-//}
+/*
+  Author: Administration-PC
+  Date: 2018/10/26 16:20
+  Copyright ： all rights reserved
+*/
+package entity;
+
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Date;
+
+@Entity
+@Table(name = "HQ_Interface_Log")
+public class HQInterfaceLog implements Serializable {
+    private static final long serialVersionUID = 1L;
+
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @Column(name = "ID")
+    private Long id;
+    @Column(name = "IsCache")
+    private boolean isCache;
+    @Column(name = "Type")
+    private String type;
+    @Column(name = "AvailID")
+    private Long availID;
+    @Column(name = "OrderID")
+    private Long orderID;
+    @Column(name = "CityID")
+    private int cityID;
+    @Column(name = "HotelID")
+    private Long hotelID;
+    @Column(name = "RoomCount")
+    private int roomCount;
+    @Column(name = "AdultCount")
+    private int adultCount;
+    @Column(name = "Request")
+    private String request;
+    @Column(name = "Response")
+    private String response;
+    @Column(name = "Error")
+    private String error;
+
+    @Column(name = "CheckIn")
+    private Date checkIn;
+    @Column(name = "CheckOut")
+    private Date checkOut;
+    @Column(name = "AddTime")
+    private Date addTime;
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public boolean isCache() {
+        return isCache;
+    }
+
+    public void setCache(boolean cache) {
+        isCache = cache;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public Long getAvailID() {
+        return availID;
+    }
+
+    public void setAvailID(Long availID) {
+        this.availID = availID;
+    }
+
+    public Long getOrderID() {
+        return orderID;
+    }
+
+    public void setOrderID(Long orderID) {
+        this.orderID = orderID;
+    }
+
+    public int getCityID() {
+        return cityID;
+    }
+
+    public void setCityID(int cityID) {
+        this.cityID = cityID;
+    }
+
+    public Long getHotelID() {
+        return hotelID;
+    }
+
+    public void setHotelID(Long hotelID) {
+        this.hotelID = hotelID;
+    }
+
+    public int getRoomCount() {
+        return roomCount;
+    }
+
+    public void setRoomCount(int roomCount) {
+        this.roomCount = roomCount;
+    }
+
+    public int getAdultCount() {
+        return adultCount;
+    }
+
+    public void setAdultCount(int adultCount) {
+        this.adultCount = adultCount;
+    }
+
+    public String getRequest() {
+        return request;
+    }
+
+    public void setRequest(String request) {
+        this.request = request;
+    }
+
+    public String getResponse() {
+        return response;
+    }
+
+    public void setResponse(String response) {
+        this.response = response;
+    }
+
+    public String getError() {
+        return error;
+    }
+
+    public void setError(String error) {
+        this.error = error;
+    }
+}

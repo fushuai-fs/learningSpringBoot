@@ -4,15 +4,18 @@
   Copyright ： all rights reserved  
 */
 
-//package dao;
-//
-//import entity.HQInterfaceLog;
-//import org.springframework.data.jpa.repository.JpaRepository;
-//
-//import java.util.List;
-//
-//public interface HQInterfaceLogRepository extends JpaRepository<HQInterfaceLog, Long> {
-//
-//
-//    List<HQInterfaceLog> findAllByOrderID(long OrderID);
-//}
+package dao;
+
+import entity.HQInterfaceLog;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+@Repository
+public interface HQInterfaceLogRepository extends JpaRepository<HQInterfaceLog, Long> {
+
+
+    List<HQInterfaceLog> findByOrderID(long OrderID);
+}
