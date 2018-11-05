@@ -40,3 +40,5 @@ demo2/*.gz
 demo*/*.log
 demo*/*.gz
 MongoDB*/
+fus/*
+fus2/*
