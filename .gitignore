@@ -40,5 +40,4 @@ demo2/*.gz
 demo*/*.log
 demo*/*.gz
 MongoDB*/
-fus/*
-fus2/*
+fusdemo5.zip
