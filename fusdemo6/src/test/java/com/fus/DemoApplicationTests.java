@@ -36,10 +36,11 @@ public class DemoApplicationTests {
 
         System.out.println("************************************************************");
 
-//        for (Long i=100L;i<300;i++ ) {
-//            PositionEntity user=new PositionEntity(i.toString(),String.valueOf(i+50),i.toString(),String.valueOf(i+100), String.valueOf(i+200),"test"+i.toString());
-//            this.positionRepository.save(user);
-//        }
+        for (Long i=400L;i<500;i++ ) {
+            PositionEntity user=new PositionEntity(i.toString(),String.valueOf(i+50),i.toString(),String.valueOf(i+100), String.valueOf(i+200),"test"+i.toString());
+            this.positionRepository.save(user);
+        }
+		System.out.println("************************** 300 **********************************");
 
 		List<PositionEntity> secondaries = this.positionRepository.findAll();
 

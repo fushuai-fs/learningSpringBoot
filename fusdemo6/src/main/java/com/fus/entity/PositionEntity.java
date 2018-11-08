@@ -18,27 +18,27 @@ public class PositionEntity implements Serializable {
     @Id
     private String id;
     @Field("DeviceID")
-    private String DeviceID;
+    private String deviceID;
     @Field("Longitude")
-    private String Longitude;
+    private String longitude;
     @Field("Latitude")
-    private String Latitude;
+    private String latitude;
     @Field("Mark")
-    private String Mark;
-    @Field("date")
+    private String mark;
+    @Field("Date")
     private Date date;
     @Field("GaodeLongitude")
-    private String GaodeLongitude;
+    private String gaodeLongitude;
     @Field("GaodeLatitude")
-    private String GaodeLatitude;
+    private String gaodeLatitude;
 
     public  PositionEntity(String deviceID,String longitude,String latitude,String gaodeLongitude,String gaodeLatitude,String mark){
-        this.DeviceID=deviceID;
-        this.Longitude=longitude;
-        this.Latitude=latitude;
-        this.GaodeLongitude=gaodeLongitude;
-        this.GaodeLatitude = gaodeLatitude;
-        this.Mark=mark;
+        this.deviceID =deviceID;
+        this.longitude =longitude;
+        this.latitude =latitude;
+        this.gaodeLongitude=gaodeLongitude;
+        this.gaodeLatitude = gaodeLatitude;
+        this.mark =mark;
         this.date= new Date();
     }
 
@@ -52,35 +52,35 @@ public class PositionEntity implements Serializable {
     }
 
     public String getDeviceID() {
-        return DeviceID;
+        return this.deviceID;
     }
 
     public void setDeviceID(String deviceID) {
-        DeviceID = deviceID;
+        this.deviceID = deviceID;
     }
 
     public String getLongitude() {
-        return Longitude;
+        return this.longitude;
     }
 
     public void setLongitude(String longitude) {
-        Longitude = longitude;
+        this.longitude = longitude;
     }
 
     public String getLatitude() {
-        return Latitude;
+        return this.latitude;
     }
 
     public void setLatitude(String latitude) {
-        Latitude = latitude;
+        this.latitude = latitude;
     }
 
     public String getMark() {
-        return Mark;
+        return this.mark;
     }
 
     public void setMark(String mark) {
-        Mark = mark;
+        this.mark = mark;
     }
 
     public Date getDate() {
@@ -92,32 +92,32 @@ public class PositionEntity implements Serializable {
     }
 
     public String getGaodeLongitude() {
-        return GaodeLongitude;
+        return this.gaodeLongitude;
     }
 
     public void setGaodeLongitude(String gaodeLongitude) {
-        GaodeLongitude = gaodeLongitude;
+        this.gaodeLongitude = gaodeLongitude;
     }
 
     public String getGaodeLatitude() {
-        return GaodeLatitude;
+        return this.gaodeLatitude;
     }
 
     public void setGaodeLatitude(String gaodeLatitude) {
-        GaodeLatitude = gaodeLatitude;
+        this.gaodeLatitude = gaodeLatitude;
     }
 
     @Override
     public String toString() {
         return "{" +
                 "id=" + id +
-                ", DeviceID='" + DeviceID + '\'' +
-                ", Longitude='" + Longitude + '\'' +
-                ", Latitude='" + Latitude + '\'' +
-                ", Mark='" + Mark + '\'' +
+                ", deviceID='" + deviceID + '\'' +
+                ", longitude='" + longitude + '\'' +
+                ", latitude='" + latitude + '\'' +
+                ", mark='" + mark + '\'' +
                 ", date=" + date +
-                ", GaodeLongitude='" + GaodeLongitude + '\'' +
-                ", GaodeLatitude='" + GaodeLatitude + '\'' +
+                ", gaodeLongitude='" + gaodeLongitude + '\'' +
+                ", gaodeLatitude='" + gaodeLatitude + '\'' +
                 '}';
     }
 }
