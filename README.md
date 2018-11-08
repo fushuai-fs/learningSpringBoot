@@ -15,4 +15,7 @@ fusdemo2 1.5.x Spring Boot JPA multi DataSource
 
 fusdemo3 2.0.x Spring Boot JPA multi DataSource
 
+fusdemo4 2.0.10 mssql
+
+fusdemo5/fusdemo6 2.0.10 mongoDB
 
