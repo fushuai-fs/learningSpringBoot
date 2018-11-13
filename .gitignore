@@ -41,3 +41,4 @@ demo*/*.log
 demo*/*.gz
 MongoDB*/
 fusdemo5.zip
+MsqlMongo*/
